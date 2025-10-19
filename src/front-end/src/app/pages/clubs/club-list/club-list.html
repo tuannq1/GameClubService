@@ -1,9 +1,15 @@
-<h2>Clubs</h2>
+<div class="club-list-container">
+  <div class="header">
+    <h2>Clubs</h2>
+    <a routerLink="/clubs/create" class="add-link">+ Add Club</a>
+  </div>
 
-<a routerLink="/clubs/create" class="add-link">+ Add Club</a>
+  <ul class="club-list">
+    <li *ngFor="let club of clubs" class="club-item">
+      <strong class="club-name">{{ club.name }}</strong>
+      <p class="club-description">{{ club.description || 'No description available.' }}</p>
+    </li>
+  </ul>
 
-<ul>
-  <li *ngFor="let club of clubs">
-    <strong>{{ club.name }}</strong> — {{ club.description }}
-  </li>
-</ul>
+  <p *ngIf="clubs.length === 0" class="empty-state">No clubs found. Try adding one!</p>
+</div>

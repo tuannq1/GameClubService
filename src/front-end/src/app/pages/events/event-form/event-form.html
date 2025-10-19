@@ -1,17 +1,50 @@
-<h2>Create Event</h2>
+<div class="event-form-container">
+  <h2>📝 Create Event</h2>
 
-<form (ngSubmit)="createEvent()">
-  <label>Club ID:</label>
-  <input [(ngModel)]="event.clubId" name="clubId" required />
+  <form (ngSubmit)="createEvent()" #eventForm="ngForm" class="event-form">
+    <div class="form-group">
+      <label for="clubId">Club ID:</label>
+      <input
+        id="clubId"
+        [(ngModel)]="event.clubId"
+        name="clubId"
+        required
+        placeholder="Enter club ID"
+      />
+    </div>
 
-  <label>Title:</label>
-  <input [(ngModel)]="event.title" name="title" required />
+    <div class="form-group">
+      <label for="title">Title:</label>
+      <input
+        id="title"
+        [(ngModel)]="event.title"
+        name="title"
+        required
+        placeholder="Enter event title"
+      />
+    </div>
 
-  <label>Description:</label>
-  <textarea [(ngModel)]="event.description" name="description"></textarea>
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea
+        id="description"
+        [(ngModel)]="event.description"
+        name="description"
+        placeholder="Describe the event"
+      ></textarea>
+    </div>
 
-  <label>Scheduled At:</label>
-  <input [(ngModel)]="event.scheduledAt" name="scheduledAt" type="datetime-local" required />
+    <div class="form-group">
+      <label for="scheduledAt">Scheduled At:</label>
+      <input
+        id="scheduledAt"
+        [(ngModel)]="event.scheduledAt"
+        name="scheduledAt"
+        type="datetime-local"
+        required
+      />
+    </div>
 
-  <button type="submit">Save</button>
-</form>
+    <button type="submit" [disabled]="!eventForm.form.valid">Save Event</button>
+  </form>
+</div>

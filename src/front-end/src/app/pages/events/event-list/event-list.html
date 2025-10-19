@@ -1,9 +1,17 @@
-<h2>🎉 Events</h2>
-<a routerLink="/events/create">+ Add Event</a>
+<div class="event-list-container">
+  <h2>Events</h2>
+  <a routerLink="/events/create" class="add-btn">+ Add Event</a>
 
-<ul>
-  <li *ngFor="let event of events">
-    <strong>{{ event.title }}</strong> — {{ event.description }}<br />
-    <small>Club ID: {{ event.clubId }} | Scheduled: {{ event.scheduledAt | date:'short' }}</small>
-  </li>
-</ul>
+  <ul class="event-list">
+    <li *ngFor="let event of events" class="event-item">
+      <div class="event-header">
+        <h3>{{ event.title }}</h3>
+        <span class="event-date">{{ event.scheduledAt | date: 'medium' }}</span>
+      </div>
+      <p class="event-description">{{ event.description }}</p>
+      <div class="event-meta">
+        <span>Club ID: <strong>{{ event.clubId }}</strong></span>
+      </div>
+    </li>
+  </ul>
+</div>

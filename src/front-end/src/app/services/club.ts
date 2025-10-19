@@ -30,7 +30,7 @@ export class ClubService {
 
   private handleError(error: HttpErrorResponse) {
     console.error('ClubService error:', error);
-    if (error.status === 0) {
+    if (error?.status === 0) {
       console.error('A network error occurred:', error.error);
     } else {
       console.error(`Backend returned code ${error.status}, body: `, error.error);
