@@ -63,7 +63,7 @@ Before running the application, ensure you have the following installed:
 - [npm](https://www.npmjs.com/) (comes with Node.js)
 - [Angular CLI](https://angular.io/cli) (v20.3.6)
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Clone the Repository
 
@@ -130,7 +130,7 @@ The Angular application will start on `http://localhost:4200`.
 - **Backend API**: https://localhost:5141
 - **Swagger Documentation**: https://localhost:5141 (Development mode)
 
-## 📁 Project Structure
+## Project Structure
 
 ### Back-End Structure
 
@@ -172,7 +172,7 @@ src/app/
 └── app.ts                       # Root component
 ```
 
-## 📚 API Documentation
+## API Documentation
 
 ### API Endpoints
 
@@ -201,7 +201,7 @@ AllowAnyHeader()
 
 **Note**: For production, configure specific origins instead of `AllowAnyOrigin()`.
 
-## 💻 Development Guidelines
+## Development Guidelines
 
 ### Back-End Development
 
