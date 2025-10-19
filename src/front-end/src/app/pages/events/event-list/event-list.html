@@ -2,6 +2,12 @@
   <h2>Events</h2>
   <a routerLink="/events/create" class="add-btn">+ Add Event</a>
 
+  <select id="clubSelect" [(ngModel)]="selectedClubId" (ngModelChange)="onClubChange($event)">
+    <option value="" disabled selected>Select a club</option>
+    <option *ngFor="let club of clubs" [value]="club.id">
+        {{ club.name }}
+    </option>
+  </select>
   <ul class="event-list">
     <li *ngFor="let event of events" class="event-item">
       <div class="event-header">

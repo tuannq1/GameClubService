@@ -13,15 +13,17 @@ export interface Event {
 
 @Injectable({ providedIn: 'root' })
 export class EventService {
-  private apiUrl = `${environment.apiBaseUrl}/events`;
+  private apiUrl = `${environment.apiBaseUrl}`;
 
   constructor(private http: HttpClient) {}
 
-  getEvents(): Observable<Event[]> {
-    return this.http.get<Event[]>(this.apiUrl);
+  getEvents(clubId: string): Observable<Event[]> {
+    const getApiUrl = this.apiUrl + '/clubs/' + clubId + '/events'
+    return this.http.get<Event[]>(getApiUrl);
   }
 
   createEvent(event: Event): Observable<Event> {
-    return this.http.post<Event>(this.apiUrl, event);
+    const createApiUrl = this.apiUrl + '/clubs/' + event.clubId + '/events'
+    return this.http.post<Event>(createApiUrl, event);
   }
 }

@@ -12,7 +12,6 @@ import { EventService, Event } from '../../../services/event';
 })
 export class EventForm {
   event: Event = {
-    id: '',
     clubId: '',
     title: '',
     description: '',
