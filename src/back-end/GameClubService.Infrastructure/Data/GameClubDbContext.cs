@@ -10,9 +10,7 @@ public class GameClubDbContext(DbContextOptions<GameClubDbContext> options) : Db
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        //add more configuration if needed
         base.OnModelCreating(modelBuilder);
     }
 }
-
-
-
