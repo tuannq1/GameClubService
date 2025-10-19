@@ -28,7 +28,10 @@ export class EventList implements OnInit {
   onClubChange(clubId: string) {
     this.eventService.getEvents(clubId).subscribe({
       next: (data) => (this.events = data),
-      error: (err) => console.error('Error fetching events', err),
+      error: (err) => {
+        console.error('Error fetching events', err)
+        this.events = [];
+        },
     });
   }
 }

@@ -8,6 +8,7 @@ import { ClubService, Club } from '../../../services/club';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './club-form.html',
+  styleUrls: ['./club-form.scss']
 })
 export class ClubForm {
   club: Club = { id: '', name: '', description: '' };
