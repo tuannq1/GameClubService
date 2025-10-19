@@ -12,22 +12,24 @@ public static class ClubsEndpoints
     public record EventRequest(string Title, string Description, DateTime ScheduledAt);
 
     public static async Task<Results<
-        Created,
-        Conflict<string>,
-        ProblemHttpResult
-    >> CreateClubApi(
-        [FromServices] IClubRepository repo,
-        [FromBody] ClubRequest req)
-    {
-        var (id, status) = await repo.CreateClubAsync(req.Name, req.Description);
+    Created<object>,
+    Conflict<string>,
+    ProblemHttpResult
+>> CreateClubApi(
+    [FromServices] IClubRepository repo,
+    [FromBody] ClubRequest req)
+{
+    var (id, status) = await repo.CreateClubAsync(req.Name, req.Description);
 
-        return status switch
-        {
-            PersistenceStatusEnum.Conflict => TypedResults.Conflict("Club already exists."),
-            PersistenceStatusEnum.Success => TypedResults.Created($"/clubs/{id}"),
-            _ => TypedResults.Problem("Unexpected error occured when trying to create new club")
-        };
-    }
+    return status switch
+    {
+        PersistenceStatusEnum.Conflict => TypedResults.Conflict("Club already exists."),
+        PersistenceStatusEnum.Success => TypedResults.Created<object>(
+            $"/clubs/{id}", id
+        ),
+        _ => TypedResults.Problem("Unexpected error occurred when trying to create new club.")
+    };
+}
 
     public static async Task<Results<
         Ok<IEnumerable<object>>,
@@ -47,7 +49,7 @@ public static class ClubsEndpoints
     }
 
     public static async Task<Results<
-        Created,
+        Created<object>,
         NotFound<string>,
         BadRequest<string>,
         ProblemHttpResult
@@ -60,7 +62,7 @@ public static class ClubsEndpoints
         return status switch
         {
             PersistenceStatusEnum.NotFound => TypedResults.NotFound("Club not found."),
-            PersistenceStatusEnum.Success => TypedResults.Created($"/clubs/{clubId}/events/{evt.Id}"),
+            PersistenceStatusEnum.Success => TypedResults.Created<object>($"/clubs/{clubId}/events/{evt?.Id}", new { ClubId = clubId, evt?.Id }),
             _ => TypedResults.Problem("Unexpected error occured when trying to create new event")
         };
     }

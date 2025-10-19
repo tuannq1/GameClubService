@@ -36,7 +36,7 @@ public class ClubRepository(GameClubDbContext db) : IClubRepository
 
     public async Task<(Event?, PersistenceStatusEnum)> CreateEventAsync(Guid clubId, string title, string? description, DateTime scheduledAt)
     {
-          var club = await _db.Clubs.Include(c => c.Events).FirstOrDefaultAsync(c => c.Id == clubId);
+        var club = await _db.Clubs.Include(c => c.Events).FirstOrDefaultAsync(c => c.Id == clubId);
         if (club == null)
             return (null, PersistenceStatusEnum.NotFound);
 
