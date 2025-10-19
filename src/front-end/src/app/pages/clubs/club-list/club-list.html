@@ -1,0 +1,9 @@
+<h2>Clubs</h2>
+
+<a routerLink="/clubs/create" class="add-link">+ Add Club</a>
+
+<ul>
+  <li *ngFor="let club of clubs">
+    <strong>{{ club.name }}</strong> — {{ club.description }}
+  </li>
+</ul>

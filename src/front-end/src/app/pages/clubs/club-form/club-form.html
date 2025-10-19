@@ -1,0 +1,15 @@
+<h2>Create Club</h2>
+
+<form (ngSubmit)="createClub()" #clubForm="ngForm">
+  <label for="name">Name:</label>
+  <input id="name" [(ngModel)]="club.name" name="name" required />
+
+  <label for="description">Description:</label>
+  <textarea
+    id="description"
+    [(ngModel)]="club.description"
+    name="description"
+  ></textarea>
+
+  <button type="submit" [disabled]="!clubForm.valid">Save</button>
+</form>

@@ -1,0 +1,17 @@
+<h2>Create Event</h2>
+
+<form (ngSubmit)="createEvent()">
+  <label>Club ID:</label>
+  <input [(ngModel)]="event.clubId" name="clubId" required />
+
+  <label>Title:</label>
+  <input [(ngModel)]="event.title" name="title" required />
+
+  <label>Description:</label>
+  <textarea [(ngModel)]="event.description" name="description"></textarea>
+
+  <label>Scheduled At:</label>
+  <input [(ngModel)]="event.scheduledAt" name="scheduledAt" type="datetime-local" required />
+
+  <button type="submit">Save</button>
+</form>

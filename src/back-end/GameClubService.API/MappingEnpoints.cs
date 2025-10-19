@@ -12,24 +12,24 @@ public static class ClubsEndpoints
     public record EventRequest(string Title, string Description, DateTime ScheduledAt);
 
     public static async Task<Results<
-    Created<object>,
-    Conflict<string>,
-    ProblemHttpResult
->> CreateClubApi(
-    [FromServices] IClubRepository repo,
-    [FromBody] ClubRequest req)
-{
-    var (id, status) = await repo.CreateClubAsync(req.Name, req.Description);
-
-    return status switch
+        Created<object>,
+        Conflict<string>,
+        ProblemHttpResult
+    >> CreateClubApi(
+        [FromServices] IClubRepository repo,
+        [FromBody] ClubRequest req)
     {
-        PersistenceStatusEnum.Conflict => TypedResults.Conflict("Club already exists."),
-        PersistenceStatusEnum.Success => TypedResults.Created<object>(
-            $"/clubs/{id}", id
-        ),
-        _ => TypedResults.Problem("Unexpected error occurred when trying to create new club.")
-    };
-}
+        var (id, status) = await repo.CreateClubAsync(req.Name, req.Description);
+
+        return status switch
+        {
+            PersistenceStatusEnum.Conflict => TypedResults.Conflict("Club already exists."),
+            PersistenceStatusEnum.Success => TypedResults.Created<object>(
+                $"/clubs/{id}", id
+            ),
+            _ => TypedResults.Problem("Unexpected error occurred when trying to create new club.")
+        };
+    }
 
     public static async Task<Results<
         Ok<IEnumerable<object>>,
