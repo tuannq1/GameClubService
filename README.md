@@ -13,7 +13,7 @@ GameClubService is a modern web application designed to help gaming communities 
 - **Database**: SQLite with Entity Framework Core
 - **ORM**: Entity Framework Core
 - **API Documentation**: Swagger/OpenAPI
-- **Architecture**: Clean Architecture (Domain, Infrastructure, API layers)
+- **Architecture**: Clean Architecture (Domain, Infrastructure, API layers) --exlude Application layer
 
 ### Front-End
 
@@ -21,7 +21,6 @@ GameClubService is a modern web application designed to help gaming communities 
 - **Language**: TypeScript 5.9.2
 - **Styling**: SCSS
 - **HTTP Client**: RxJS
-- **Testing**: Jasmine + Karma
 
 ## Architecture
 
@@ -45,7 +44,9 @@ GameClubService/
         ├── pages/                   # Feature pages
         │   ├── clubs/               # Club management
         │   └── events/              # Event management
-        └── services/                # HTTP services
+        ├── services/                # HTTP services
+        │   ├── club/               # Club service
+        │   └── event/              # Event service
 ```
 
 ## Prerequisites
@@ -89,7 +90,7 @@ dotnet restore
 #### Apply database migrations
 
 ```bash
-dotnet ef database update
+dotnet ef database update --project ../GameClubService.Infrastructure/GameClubService.Infrastructure.csproj
 ```
 
 #### Run the API
@@ -98,9 +99,9 @@ dotnet ef database update
 dotnet run
 ```
 
-The API will start on `https://localhost:5001` (or the port specified in `launchSettings.json`).
+The API will start on `https://localhost:5141` (or the port specified in `launchSettings.json`).
 
-**Swagger UI** will be available at: `https://localhost:5001` (in Development mode)
+**Swagger UI** will be available at: `https://localhost:5141` (in Development mode)
 
 ### 3. Front-End Setup
 
