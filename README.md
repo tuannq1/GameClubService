@@ -231,15 +231,15 @@ AllowAnyHeader()
 
 #### 4. Database Migrations
 
-```bash
+```bash (root at API layer)
 # Create a new migration
-dotnet ef migrations add <MigrationName> --project src/back-end/GameClubService.Infrastructure --startup-project src/back-end/GameClubService.API
+dotnet ef migrations add <MigrationName> --project ../GameClubService.Infrastructure/GameClubService.Infrastructure.csproj
 
 # Apply migrations
-dotnet ef database update --project src/back-end/GameClubService.Infrastructure --startup-project src/back-end/GameClubService.API
+dotnet ef database update --project ../GameClubService.Infrastructure/GameClubService.Infrastructure.csproj
 
 # Remove last migration (if not applied)
-dotnet ef migrations remove --project src/back-end/GameClubService.Infrastructure --startup-project src/back-end/GameClubService.API
+dotnet ef migrations remove --project ../GameClubService.Infrastructure/GameClubService.Infrastructure.csproj
 ```
 
 
