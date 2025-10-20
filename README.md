@@ -230,8 +230,8 @@ AllowAnyHeader()
 - Return proper HTTP status codes
 
 #### 4. Database Migrations
-
-```bash (root at API layer)
+root at API layer
+```bash 
 # Create a new migration
 dotnet ef migrations add <MigrationName> --project ../GameClubService.Infrastructure/GameClubService.Infrastructure.csproj
 
