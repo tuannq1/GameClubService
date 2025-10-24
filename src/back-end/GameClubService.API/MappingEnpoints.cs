@@ -80,7 +80,7 @@ public static class ClubsEndpoints
         {
             PersistenceStatusEnum.NotFound => TypedResults.NotFound("Club not found"),
             PersistenceStatusEnum.Success when events == null || !events.Any() => TypedResults.NotFound("Club has no events"),
-            PersistenceStatusEnum.Success=> TypedResults.Ok(events.Select(e => new { e.Id, e.Title, e.ScheduledAt }).AsEnumerable<object>()),
+            PersistenceStatusEnum.Success=> TypedResults.Ok(events.Select(e => new { e.Id, e.Title, e.Description, e.ScheduledAt }).AsEnumerable<object>()),
             _ => TypedResults.Problem("Unexpected error occured when trying to get list of events")
         };
     }
